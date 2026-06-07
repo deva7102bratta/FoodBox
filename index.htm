@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>FoodBox Shop — Fresh Food Delivered</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="topbar-left">
+    <span>📦 Free delivery on orders over ₹499</span>
+    <span>🌟 FoodBox Prime — Try 30 days free</span>
+  </div>
+  <div class="topbar-right">
+    <a href="#">Sell on FoodBox</a>
+    <a href="#">Help</a>
+    <a href="#">Track Order</a>
+  </div>
+</div>
+
+<!-- MAIN NAV -->
+<nav>
+  <div class="nav-main">
+    <a href="./main.html" class="nav-logo"><span class="nav-logo-box">🍽</span>FoodBox</a>
+    <div class="nav-location">
+      <span>📍</span>
+      <div><small>Deliver to</small><br/><strong>Imphal West 795001</strong></div>
+    </div>
+    <div class="search-bar">
+      <select class="search-cat">
+        <option>All Food</option>
+        <option>Snacks</option>
+        <option>Groceries</option>
+        <option>Beverages</option>
+        <option>Organic</option>
+        <option>Sweets</option>
+      </select>
+      <input class="search-input" type="text" placeholder="Search for groceries, snacks, beverages..."/>
+      <button class="search-btn">🔍</button>
+    </div>
+    <div class="nav-right">
+      <a href="#" class="nav-btn"><small>Hello, Sign in</small><strong>Account & Lists</strong></a>
+      <a href="#" class="nav-btn"><small>Returns</small><strong>&amp; Orders</strong></a>
+      <button class="cart-btn" onclick=toggleCart()>
+        <span class="cart-icon">
+            🛒<span class="cart-count" id="cartCount">0</span>
+        </span>
+          <strong>Cart</strong>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- NAV BOTTOM -->
+<div class="nav-bottom">
+  <div class="nav-bottom-inner">
+    <a href="#">☰ All Categories</a>
+    <a href="#" class="hot">🔥 Today's Deals</a>
+    <a href="#">🌿 Organic</a>
+    <a href="#">🥩 Fresh Meat</a>
+    <a href="#">🥛 Dairy</a>
+    <a href="#">🍎 Fruits & Veggies</a>
+    <a href="#">🧁 Bakery</a>
+    <a href="#">🍫 Chocolates</a>
+    <a href="#">☕ Beverages</a>
+    <a href="#">🌶️ Spices</a>
+    <a href="#">👶 Baby Food</a>
+    <a href="#">⭐ Prime Exclusives</a>
+  </div>
+</div>
+
+<!-- DEALS BANNER -->
+<div class="deals-banner">
+  <div class="deals-inner">
+    <span style="color:#fff;font-weight:700;font-size:1rem">⚡ FLASH SALE ENDS IN:</span>
+    <div class="deal-timer">
+      <div class="timer-box" id="th">02</div>:<div class="timer-box" id="tm">47</div>:<div class="timer-box" id="ts">33</div>
+    </div>
+    <span class="deals-text">Up to 60% OFF on 500+ products!</span>
+    <a href="#" class="deals-link">Shop Now →</a>
+  </div>
+</div>
+
+<!-- HERO SLIDER -->
+<div class="hero-slider">
+  <div class="slides" id="slides">
+    <div class="slide slide-1">
+      <div class="slide-emoji">🥗</div>
+      <div class="slide-content">
+        <div class="slide-badge">🌿 New Arrivals — Organic Range</div>
+        <h2>Farm Fresh,<br/>Straight to Your <em>Door</em></h2>
+        <p>100% organic fruits, vegetables & grains sourced directly from certified farms across India.</p>
+        <a href="#" class="slide-btn">Shop Organic ↗</a>
+      </div>
+    </div>
+    <div class="slide slide-2">
+      <div class="slide-emoji">🍫</div>
+      <div class="slide-content">
+        <div class="slide-badge">🍫 Sweet Season Sale — Up to 50% Off</div>
+        <h2>Indulge in <em>Premium</em><br/>Chocolates & Sweets</h2>
+        <p>Curated selection of artisan chocolates, mithai, and desserts for every occasion.</p>
+        <a href="#" class="slide-btn">Shop Sweets ↗</a>
+      </div>
+    </div>
+    <div class="slide slide-3">
+      <div class="slide-emoji">☕</div>
+      <div class="slide-content">
+        <div class="slide-badge">☕ Morning Essentials — New Stock</div>
+        <h2>Start Your Day<br/>the <em>Right Way</em></h2>
+        <p>Premium teas, coffees, cereals & breakfast staples delivered before 7AM with Prime.</p>
+        <a href="#" class="slide-btn">Shop Breakfast ↗</a>
+      </div>
+    </div>
+  </div>
+  <button class="slider-arrow prev" onclick="changeSlide(-1)">‹</button>
+  <button class="slider-arrow next" onclick="changeSlide(1)">›</button>
+  <div class="slider-dots">
+    <div class="dot active" onclick="goSlide(0)"></div>
+    <div class="dot" onclick="goSlide(1)"></div>
+    <div class="dot" onclick="goSlide(2)"></div>
+  </div>
+</div>
+
+<!-- MAIN PAGE -->
+<div class="page">
+
+  <!-- CATEGORIES -->
+  <div class="sec-head">
+    <div class="sec-title">Shop by <span>Category</span></div>
+    <a href="#" class="sec-link">View all →</a>
+  </div>
+  <div class="cat-grid">
+    <a href="#" class="cat-item active" onclick="filterCat(event,'all')"><div class="cat-emoji">🛍️</div><div class="cat-name">All Items</div></a>
+    <a href="#" class="cat-item" onclick="filterCat(event,'fruits')"><div class="cat-emoji">🍎</div><div class="cat-name">Fruits & Veg</div></a>
+    <a href="#" class="cat-item" onclick="filterCat(event,'snacks')"><div class="cat-emoji">🍿</div><div class="cat-name">Snacks</div></a>
+    <a href="#" class="cat-item" onclick="filterCat(event,'dairy')"><div class="cat-emoji">🥛</div><div class="cat-name">Dairy</div></a>
+    <a href="#" class="cat-item" onclick="filterCat(event,'beverages')"><div class="cat-emoji">☕</div><div class="cat-name">Beverages</div></a>
+    <a href="#" class="cat-item" onclick="filterCat(event,'sweets')"><div class="cat-emoji">🍫</div><div class="cat-name">Sweets</div></a>
+    <a href="#" class="cat-item" onclick="filterCat(event,'spices')"><div class="cat-emoji">🌶️</div><div class="cat-name">Spices</div></a>
+    <a href="#" class="cat-item" onclick="filterCat(event,'bakery')"><div class="cat-emoji">🥖</div><div class="cat-name">Bakery</div></a>
+  </div>
+
+  <!-- FEATURED PRODUCTS -->
+  <div class="sec-head">
+    <div class="sec-title">🔥 Best <span>Sellers</span></div>
+    <a href="#" class="sec-link">See all products →</a>
+  </div>
+  <div class="product-grid" id="productGrid">
+
+    <div class="pcard" data-cat="fruits">
+      <div class="pcard-badge badge-sale">-35%</div>
+      <button class="pcard-wish" onclick="toggleWish(this)">🤍</button>
+      <div class="pcard-img" style="background:linear-gradient(135deg,#fff8f0,#ffe8d6)">🍎</div>
+      <div class="pcard-body">
+        <div class="pcard-brand">FoodBox Fresh</div>
+        <div class="pcard-name">Premium Kashmiri Red Apples — 1 Kg Box</div>
+        <div class="stars"><span class="star-fill">★★★★★</span><span class="star-count">(2,841)</span></div>
+        <div class="price-row"><span class="price-new">₹199</span><span class="price-old">₹309</span><span class="price-save">Save ₹110</span></div>
+        <div class="pcard-delivery">🚀 FREE delivery by Tomorrow</div>
+        <button class="add-btn" onclick="addToCart(this,'Kashmiri Red Apples','₹199','🍎')">🛒 Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="pcard" data-cat="snacks">
+      <div class="pcard-badge badge-hot">HOT</div>
+      <button class="pcard-wish" onclick="toggleWish(this)">🤍</button>
+      <div class="pcard-img" style="background:linear-gradient(135deg,#fff9e6,#fff0c0)">🍿</div>
+      <div class="pcard-body">
+        <div class="pcard-brand">Haldiram's</div>
+        <div class="pcard-name">Premium Aloo Bhujia Namkeen — 400g Pack</div>
+        <div class="stars"><span class="star-fill">★★★★☆</span><span class="star-count">(5,120)</span></div>
+        <div class="price-row"><span class="price-new">₹149</span><span class="price-old">₹180</span><span class="price-save">Save ₹31</span></div>
+        <div class="pcard-delivery">🚀 FREE delivery by Today</div>
+        <button class="add-btn" onclick="addToCart(this,'Aloo Bhujia 400g','₹149','🍿')">🛒 Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="pcard" data-cat="beverages">
+      <div class="pcard-badge badge-best">★ BEST</div>
+      <button class="pcard-wish" onclick="toggleWish(this)">🤍</button>
+      <div class="pcard-img" style="background:linear-gradient(135deg,#f0fdf4,#dcfce7)">☕</div>
+      <div class="pcard-body">
+        <div class="pcard-brand">Tata Tea</div>
+        <div class="pcard-name">Gold Leaf Assam Blend Premium Tea — 500g</div>
+        <div class="stars"><span class="star-fill">★★★★★</span><span class="star-count">(8,402)</span></div>
+        <div class="price-row"><span class="price-new">₹280</span><span class="price-old">₹320</span><span class="price-save">Save ₹40</span></div>
+        <div class="pcard-delivery">🚀 FREE delivery by Tomorrow</div>
+        <button class="add-btn" onclick="addToCart(this,'Tata Gold Tea 500g','₹280','☕')">🛒 Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="pcard" data-cat="dairy">
+      <div class="pcard-badge badge-new">NEW</div>
+      <button class="pcard-wish" onclick="toggleWish(this)">🤍</button>
+      <div class="pcard-img" style="background:linear-gradient(135deg,#fffbeb,#fef3c7)">🧀</div>
+      <div class="pcard-body">
+        <div class="pcard-brand">Amul</div>
+        <div class="pcard-name">Fresh Mozzarella Cheese Block — 200g</div>
+        <div class="stars"><span class="star-fill">★★★★☆</span><span class="star-count">(1,203)</span></div>
+        <div class="price-row"><span class="price-new">₹175</span><span class="price-old">₹199</span><span class="price-save">Save ₹24</span></div>
+        <div class="pcard-delivery">🚀 FREE delivery by Tomorrow</div>
+        <button class="add-btn" onclick="addToCart(this,'Amul Mozzarella 200g','₹175','🧀')">🛒 Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="pcard" data-cat="sweets">
+      <div class="pcard-badge badge-sale">-40%</div>
+      <button class="pcard-wish" onclick="toggleWish(this)">🤍</button>
+      <div class="pcard-img" style="background:linear-gradient(135deg,#fdf2f8,#fce7f3)">🍫</div>
+      <div class="pcard-body">
+        <div class="pcard-brand">Cadbury</div>
+        <div class="pcard-name">Bournville Dark Chocolate Gift Box — 250g</div>
+        <div class="stars"><span class="star-fill">★★★★★</span><span class="star-count">(3,671)</span></div>
+        <div class="price-row"><span class="price-new">₹299</span><span class="price-old">₹499</span><span class="price-save">Save ₹200</span></div>
+        <div class="pcard-delivery">✨ Prime FREE 1-Day</div>
+        <button class="add-btn" onclick="addToCart(this,'Bournville Dark 250g','₹299','🍫')">🛒 Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="pcard" data-cat="spices">
+      <div class="pcard-badge badge-hot">HOT</div>
+      <button class="pcard-wish" onclick="toggleWish(this)">🤍</button>
+      <div class="pcard-img" style="background:linear-gradient(135deg,#fff7ed,#fed7aa)">🌶️</div>
+      <div class="pcard-body">
+        <div class="pcard-brand">Everest</div>
+        <div class="pcard-name">Kitchen King Masala — 100g Premium Pack</div>
+        <div class="stars"><span class="star-fill">★★★★★</span><span class="star-count">(9,871)</span></div>
+        <div class="price-row"><span class="price-new">₹89</span><span class="price-old">₹110</span><span class="price-save">Save ₹21</span></div>
+        <div class="pcard-delivery">🚀 FREE delivery by Today</div>
+        <button class="add-btn" onclick="addToCart(this,'Everest Kitchen King','₹89','🌶️')">🛒 Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="pcard" data-cat="bakery">
+      <div class="pcard-badge badge-new">NEW</div>
+      <button class="pcard-wish" onclick="toggleWish(this)">🤍</button>
+      <div class="pcard-img" style="background:linear-gradient(135deg,#fefce8,#fef9c3)">🥖</div>
+      <div class="pcard-body">
+        <div class="pcard-brand">FoodBox Bakery</div>
+        <div class="pcard-name">Artisan Sourdough Loaf — Freshly Baked Daily</div>
+        <div class="stars"><span class="star-fill">★★★★★</span><span class="star-count">(412)</span></div>
+        <div class="price-row"><span class="price-new">₹129</span></div>
+        <div class="pcard-delivery">🌅 Morning delivery by 7AM</div>
+        <button class="add-btn" onclick="addToCart(this,'Artisan Sourdough','₹129','🥖')">🛒 Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="pcard" data-cat="fruits">
+      <div class="pcard-badge badge-sale">-25%</div>
+      <button class="pcard-wish" onclick="toggleWish(this)">🤍</button>
+      <div class="pcard-img" style="background:linear-gradient(135deg,#f0fdf4,#bbf7d0)">🥭</div>
+      <div class="pcard-body">
+        <div class="pcard-brand">FoodBox Fresh</div>
+        <div class="pcard-name">Alphonso Mango Premium Box — 12 Pcs (2 Kg)</div>
+        <div class="stars"><span class="star-fill">★★★★★</span><span class="star-count">(6,204)</span></div>
+        <div class="price-row"><span class="price-new">₹549</span><span class="price-old">₹729</span><span class="price-save">Save ₹180</span></div>
+        <div class="pcard-delivery">✨ Prime FREE 1-Day</div>
+        <button class="add-btn" onclick="addToCart(this,'Alphonso Mangoes 2Kg','₹549','🥭')">🛒 Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="pcard" data-cat="beverages">
+      <div class="pcard-badge badge-best">★ BEST</div>
+      <button class="pcard-wish" onclick="toggleWish(this)">🤍</button>
+      <div class="pcard-img" style="background:linear-gradient(135deg,#eff6ff,#dbeafe)">🧃</div>
+      <div class="pcard-body">
+        <div class="pcard-brand">Real</div>
+        <div class="pcard-name">Mixed Fruit Juice Multipack — 6 × 200ml</div>
+        <div class="stars"><span class="star-fill">★★★★☆</span><span class="star-count">(2,108)</span></div>
+        <div class="price-row"><span class="price-new">₹210</span><span class="price-old">₹249</span><span class="price-save">Save ₹39</span></div>
+        <div class="pcard-delivery">🚀 FREE delivery by Tomorrow</div>
+        <button class="add-btn" onclick="addToCart(this,'Real Juice Multipack','₹210','🧃')">🛒 Add to Cart</button>
+      </div>
+    </div>
+
+    <div class="pcard" data-cat="snacks">
+      <div class="pcard-badge badge-hot">HOT</div>
+      <button class="pcard-wish" onclick="toggleWish(this)">🤍</button>
+      <div class="pcard-img" style="background:linear-gradient(135deg,#fff8f0,#ffe8d0)">🍪</div>
+      <div class="pcard-body">
+        <div class="pcard-brand">Britannia</div>
+        <div class="pcard-name">Good Day Cashew Cookies Family Pack — 600g</div>
+        <div class="stars"><span class="star-fill">★★★★★</span><span class="star-count">(4,320)</span></div>
+        <div class="price-row"><span class="price-new">₹175</span><span class="price-old">₹210</span><span class="price-save">Save ₹35</span></div>
+        <div class="pcard-delivery">🚀 FREE delivery by Today</div>
+        <button class="add-btn" onclick="addToCart(this,'Britannia Good Day 600g','₹175','🍪')">🛒 Add to Cart</button>
+      </div>
+    </div>
+
+  </div>
+
+  PROMO STRIP
+  <div class="promo-strip">
+    <div class="promo-card" style="background:linear-gradient(135deg,#1a3d2b,#0d5c38);color:#fff">
+      <div class="bg-emoji">🌿</div>
+      <div class="promo-tag">🌱 Certified Organic</div>
+      <div class="promo-title">Go Organic.<br/>Live Healthier.</div>
+      <div class="promo-sub">150+ certified organic products at everyday prices</div>
+      <a href="#" class="promo-btn" style="background:#fff;color:#1a3d2b">Shop Organic ↗</a>
+    </div>
+    <div class="promo-card" style="background:linear-gradient(135deg,#3d1200,#8b2500);color:#fff">
+      <div class="bg-emoji">🎁</div>
+      <div class="promo-tag">🎁 Gift Season</div>
+      <div class="promo-title">Premium Gift<br/>Hampers.</div>
+      <div class="promo-sub">Curated food gift boxes — perfect for every occasion</div>
+      <a href="#" class="promo-btn" style="background:var(--yellow);color:var(--black)">Shop Hampers ↗</a>
+    </div>
+  </div>
+
+  QUICK PICKS
+  <div class="sec-head">
+    <div class="sec-title">⚡ <span>Quick Picks</span> Under ₹200</div>
+    <a href="#" class="sec-link">View all →</a>
+  </div>
+  <div class="mini-grid">
+    <a href="#" class="mini-card"><div class="mini-img">🥜</div><div class="mini-info"><div class="mini-name">Roasted Peanuts — 250g</div><div class="mini-price">₹65</div><div class="mini-old">₹89</div></div></a>
+    <a href="#" class="mini-card"><div class="mini-img">🍯</div><div class="mini-info"><div class="mini-name">Pure Wild Honey — 250g</div><div class="mini-price">₹180</div><div class="mini-old">₹220</div></div></a>
+    <a href="#" class="mini-card"><div class="mini-img">🧂</div><div class="mini-info"><div class="mini-name">Himalayan Pink Salt — 500g</div><div class="mini-price">₹99</div><div class="mini-old">₹140</div></div></a>
+    <a href="#" class="mini-card"><div class="mini-img">🫙</div><div class="mini-info"><div class="mini-name">Mixed Pickle Classic — 400g</div><div class="mini-price">₹120</div><div class="mini-old">₹155</div></div></a>
+    <a href="#" class="mini-card"><div class="mini-img">🌽</div><div class="mini-info"><div class="mini-name">Cornflakes Original — 300g</div><div class="mini-price">₹85</div><div class="mini-old">₹110</div></div></a>
+    <a href="#" class="mini-card"><div class="mini-img">🫚</div><div class="mini-info"><div class="mini-name">Cold Press Coconut Oil — 200ml</div><div class="mini-price">₹165</div><div class="mini-old">₹199</div></div></a>
+    <a href="#" class="mini-card"><div class="mini-img">🍵</div><div class="mini-info"><div class="mini-name">Green Tea Bags — 25 pcs</div><div class="mini-price">₹110</div><div class="mini-old">₹145</div></div></a>
+    <a href="#" class="mini-card"><div class="mini-img">🫘</div><div class="mini-info"><div class="mini-name">Rajma (Kidney Beans) — 1 Kg</div><div class="mini-price">₹145</div><div class="mini-old">₹175</div></div></a>
+  </div>
+
+</div>
+
+TRUST BAR
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item"><div class="trust-icon">🚀</div><div><div class="trust-title">Free & Fast Delivery</div><div class="trust-sub">On all orders above ₹499</div></div></div>
+    <div class="trust-item"><div class="trust-icon">🔒</div><div><div class="trust-title">Secure Payments</div><div class="trust-sub">100% safe UPI, cards & wallets</div></div></div>
+    <div class="trust-item"><div class="trust-icon">🌿</div><div><div class="trust-title">Fresh Guarantee</div><div class="trust-sub">Freshness or your money back</div></div></div>
+    <div class="trust-item"><div class="trust-icon">🎧</div><div><div class="trust-title">24/7 Support</div><div class="trust-sub">Real humans, always available</div></div></div>
+  </div>
+</div>
+
+FOOTER
+<footer>
+  <div class="footer-top-bar" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <span>Back to top ↑</span>
+  </div>
+  <div class="footer-main">
+    <div>
+      <div class="footer-brand-logo"><span>🍽</span>FoodBox</div>
+      <div class="footer-desc">India's most trusted online food store. Fresh, organic, and delivered to your door since 2020.</div>
+      <div class="app-btns">
+        <a href="#" class="app-btn">📱 App Store</a>
+        <a href="#" class="app-btn">🤖 Google Play</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <a href="#">All Products</a><a href="#">Today's Deals</a><a href="#">New Arrivals</a><a href="#">Best Sellers</a><a href="#">Organic Range</a>
+    </div>
+    <div class="footer-col">
+      <h4>Account</h4>
+      <a href="#">My Account</a><a href="#">My Orders</a><a href="#">Wishlist</a><a href="#">FoodBox Prime</a><a href="#">Gift Cards</a>
+    </div>
+    <div class="footer-col">
+      <h4>Help</h4>
+      <a href="#">Track Order</a><a href="#">Returns Policy</a><a href="#">FAQs</a><a href="#">Contact Us</a><a href="#">Bulk Orders</a>
+    </div>
+    <div class="footer-col">
+      <h4>Company</h4>
+      <a href="#">About FoodBox</a><a href="#">Careers</a><a href="#">Sell With Us</a><a href="#">Press</a><a href="#">Blog</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <span style="color:rgba(255,255,255,0.4)">© 2026 FoodBox Inc. All rights reserved.</span>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a><a href="#">Terms of Use</a><a href="#">Cookie Policy</a><a href="#">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- CART OVERLAY + SIDEBAR -->
+<div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+<div class="cart-sidebar" id="cartSidebar">
+  <div class="cart-head">
+    <h3>🛒 Your Cart (<span id="cartItemCount">0</span>)</h3>
+    <button class="cart-close" onclick="toggleCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems">
+    <div class="cart-empty">
+      <div class="cart-empty-icon">🛒</div>
+      <div style="font-weight:600;margin-bottom:6px">Your cart is empty</div>
+      <div style="font-size:0.85rem;color:var(--gray-400)">Add items to get started!</div>
+    </div>
+  </div>
+  <div class="cart-footer">
+    <div class="cart-subtotal"><span>Subtotal</span><strong id="cartTotal">₹0</strong></div>
+    <div class="cart-note" id="freeDeliveryNote"></div>
+    <button class="checkout-btn">Proceed to Checkout →</button>
+    <button class="continue-btn" onclick="toggleCart()">Continue Shopping</button>
+  </div>
+</div>
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
