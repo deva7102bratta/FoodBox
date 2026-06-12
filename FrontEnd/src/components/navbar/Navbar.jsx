@@ -1,25 +1,94 @@
-import React, {useState} from "react"
-import "./Navbar.css"
-import {assets} from "../../assets/frontend_assets/assets.js"
-const Navbar = ()=>{
-  const [menu, setMenu] = useState("home")
-  return(
+import React, { useState } from "react";
+import "./Navbar.css";
+import { assets } from "../../assets/frontend_assets/assets.js";
+import { Link } from "react-router-dom";
+
+const Navbar = ({ setShowLogin }) => {
+  const [menu, setMenu] = useState("home");
+  const [mobileMenu, setMobileMenu] = useState(false);
+
+  return (
     <div className="navbar">
-      <img src={assets.logo} className="logo" width="100px"></img>
-      <ul className="navbar-menu">
-        <li onClick={()=>setMenu("home")} className={menu==="home"?"active":""}>home</li>
-        <li onClick={()=>setMenu("menu")} className={menu==="menu"?"active":""}>menu</li>
-        <li onClick={()=>setMenu("mobile-app")} className={menu==="mobile-app"?"active":""}>mobile-app</li>
-        <li onClick={()=>setMenu("contact us")} className={menu==="contact us"?"active":""}>contact us</li>
+      <Link to="/">
+        <img src={assets.logo_2} alt="" className="logo" />
+      </Link>
+
+      <div
+        className="hamburger"
+        onClick={() => setMobileMenu(!mobileMenu)}
+      >
+        ☰
+      </div>
+
+      {mobileMenu && (
+        <div
+          className="menu-overlay"
+          onClick={() => setMobileMenu(false)}
+        />
+      )}
+
+      <ul className={`navbar-menu ${mobileMenu ? "open" : ""}`}>
+        <Link
+          to="/"
+          onClick={() => {
+            setMenu("home");
+            setMobileMenu(false);
+          }}
+          className={menu === "home" ? "active" : ""}
+        >
+          Home
+        </Link>
+
+        <a
+          href="#explore-menu"
+          onClick={() => {
+            setMenu("menu");
+            setMobileMenu(false);
+          }}
+          className={menu === "menu" ? "active" : ""}
+        >
+          Menu
+        </a>
+
+        <a
+          href="#app-download"
+          onClick={() => {
+            setMenu("mobile-app");
+            setMobileMenu(false);
+          }}
+          className={menu === "mobile-app" ? "active" : ""}
+        >
+          Mobile App
+        </a>
+
+        <a
+          href="#footer"
+          onClick={() => {
+            setMenu("contact");
+            setMobileMenu(false);
+          }}
+          className={menu === "contact" ? "active" : ""}
+        >
+          Contact Us
+        </a>
       </ul>
+
       <div className="navbar-right">
-        <img src={assets.search_icon}></img>
+        <img src={assets.search_icon} alt="Search" />
+
         <div className="navbar-search-icon">
-          <img src={assets.basket_icon}></img>
+          <Link to="/cart">
+            <img src={assets.basket_icon} alt="Cart" />
+          </Link>
+          <div className="dot"></div>
         </div>
-        <button>Sign In</button>
+
+        <button onClick={() => setShowLogin(true)}>
+          Sign In
+        </button>
       </div>
     </div>
-  )
-}
-export default Navbar
+  );
+};
+
+export default Navbar;

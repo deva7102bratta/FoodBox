@@ -1,5 +1,6 @@
 import basket_icon from './basket_icon.png'
 import logo from './logo.png'
+import logo_2 from "./logo_2.png"
 import header_img from './header_img.png'
 import search_icon from './search_icon.png'
 import menu_1 from './menu_1.png'
@@ -52,6 +53,7 @@ import play_store from './play_store.png'
 import linkedin_icon from './linkedin_icon.png'
 import facebook_icon from './facebook_icon.png'
 import twitter_icon from './twitter_icon.png'
+import ig_icon from "./ig_icon.png"
 import cross_icon from './cross_icon.png'
 import selector_icon from './selector_icon.png'
 import rating_starts from './rating_starts.png'
@@ -62,6 +64,7 @@ import parcel_icon from './parcel_icon.png'
 
 export const assets = {
     logo,
+    logo_2,
     basket_icon,
     header_img,
     search_icon,
@@ -74,6 +77,7 @@ export const assets = {
     linkedin_icon,
     facebook_icon,
     twitter_icon,
+    ig_icon,
     cross_icon,
     selector_icon,
     profile_icon,
