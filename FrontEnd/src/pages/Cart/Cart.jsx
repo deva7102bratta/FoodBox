@@ -1,9 +1,11 @@
 import React, {useContext} from "react"
 import "./Cart.css"
 import {StoreContext}  from "../../Context/StoreContext.jsx"
+import {useNavigate} from "react-router-dom"
 
 const Cart = ()=>{
   const {cartItems, food_list, removeAll, getTotalCartAmount } = useContext(StoreContext)
+  const navigate = useNavigate()
   return (
     <div className="cart">
       <div className="cart-items">
@@ -27,7 +29,7 @@ const Cart = ()=>{
                 <p>{item.price}</p>
                 <p>{cartItems[item._id]}</p>
                 <p>{item.price*cartItems[item._id]}</p>
-                <p onClick={()=>removeAll(item._id)}>X</p>
+                <p onClick={()=>removeAll(item._id)} className="remove">X</p>
               </div>
               <hr />
             </div>
@@ -41,20 +43,20 @@ const Cart = ()=>{
         <div>
           <div className="cart-total-details">
             <p>Subtotal</p>
-            <p>{getTotalCartAmount()}</p>
+            <p>₹{getTotalCartAmount()}</p>
           </div>
           <hr />
           <div className="cart-total-details">
             <p>Delivery Fee</p>
-            <p>{50}</p>
+            <p>₹{getTotalCartAmount()===0?0:250}</p>
           </div>
           <hr />
           <div className="cart-total-details">
             <b>Total</b>
-            <b>{getTotalCartAmount()+50}</b>
+            <b>₹{getTotalCartAmount()===0?0:getTotalCartAmount()+250}</b>
           </div>
         </div>
-        <button>PROCEED TO CHECKOUT</button>
+        <button onClick={()=>navigate("/order")}>PROCEED TO CHECKOUT</button>
       </div>
       
       <div className="cart-promocode">

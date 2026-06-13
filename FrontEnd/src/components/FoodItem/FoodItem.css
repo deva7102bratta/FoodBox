@@ -124,7 +124,7 @@
 .food-item-img-container{
   position: relative;
 }
-.food-item-counter{
+.food-item-counter {
   position: absolute;
   bottom: 1px;
   right: 1px;
@@ -134,4 +134,17 @@
   padding: 6px;
   border-radius: 50px;
   background: white;
+  
+}
+.add-food{
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px;
+  border-radius: 50px;
+  background: white;
+  width: 45px;
 }
