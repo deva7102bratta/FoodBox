@@ -66,8 +66,54 @@
 .qty:focus {
   border-color: tomato;
 }
+.payment-box {
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid #eee;
+  background: #fff;
+}
 
+.payment-box h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
 
+.pay-card {
+  padding: 14px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+  background: #fafafa;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: 0.25s;
+  display: flex;
+  flex-direction: column;
+}
+
+.pay-card b {
+  font-size: 14px;
+  color: #111;
+}
+
+.pay-card small {
+  font-size: 12px;
+  color: #777;
+}
+
+/* HOVER EFFECT */
+.pay-card:hover {
+  border-color: tomato;
+  background: #fff5f3;
+  transform: translateY(-2px);
+}
+
+/* ACTIVE STATE */
+.pay-card.active {
+  border: 2px solid tomato;
+  background: #eeffee;
+  box-shadow: 0 6px 15px rgba(255, 99, 71, 0.15);
+}
 @media (max-width: 768px){
   .place-order{
     display: flex;

@@ -1,6 +1,6 @@
 import React from "react";
 import "./Header.css";
-import headerImg from "../../assets/header_img.png";
+import headerImg from "../../assets/header_img.webp";
 
 const Header = () => {
   return (

@@ -4,16 +4,13 @@ import { useLocation } from "react-router-dom";
 
 const OrderNow = () => {
   const { state } = useLocation();
-
+  const [paymentMethod, setPaymentMethod] = useState("upi");
   const price = state?.price || 0;
-
   // Store quantity as text while typing
   const [quantity, setQuantity] = useState(
     state?.quantity?.toString() || "0"
   );
-
   const qty = Number(quantity) ;
-
   const subtotal = price * qty;
   const deliveryFee = qty > 0 ? 250 : 0;
   const total = subtotal + deliveryFee;
@@ -27,28 +24,55 @@ const OrderNow = () => {
       {/* Left Side */}
       <div className="place-order-left">
         <p className="title">Delivery Information</p>
-
+      
         <div className="multi-fields">
           <input type="text" placeholder="First Name" />
           <input type="text" placeholder="Last Name" />
         </div>
-
+      
         <input type="email" placeholder="Email Address" />
         <input type="text" placeholder="Street" />
-
+      
         <div className="multi-fields">
           <input type="text" placeholder="City" />
           <input type="text" placeholder="State" />
         </div>
-
+      
         <div className="multi-fields">
           <input type="text" placeholder="Zip Code" />
           <input type="text" placeholder="Country" />
         </div>
-
+      
         <input type="text" placeholder="Phone Number" />
-      </div>
-
+      
+        <div className="payment-box">
+          <h3>Select Payment Method</h3>
+      
+          <div
+            className={`pay-card ${paymentMethod === "upi" ? "active" : ""}`}
+            onClick={() => setPaymentMethod("upi")}
+          >
+            <b>UPI</b>
+            <small>Google Pay / PhonePe / Paytm</small>
+          </div>
+      
+          <div
+            className={`pay-card ${paymentMethod === "card" ? "active" : ""}`}
+            onClick={() => setPaymentMethod("card")}
+          >
+            <b>Card</b>
+            <small>Credit / Debit Card</small>
+          </div>
+      
+          <div
+            className={`pay-card ${paymentMethod === "cod" ? "active" : ""}`}
+            onClick={() => setPaymentMethod("cod")}
+          >
+            <b>Cash on Delivery</b>
+            <small>Pay when food arrives</small>
+          </div>
+        </div>
+      </div>   {/* ✅ only ONE closing tag here */}
       {/* Right Side */}
       <div className="place-order-right">
         <div className="cart-total">
