@@ -1,12 +1,14 @@
-//mongodb+srv://devabratta:js82jJu72hH77WHWOJSYN1937H@cluster0.d41rm7j.mongodb.net/?appName=Cluster0
 import express from "express";
 import cors from "cors"
 import {connectDB} from "./config/db.js"
 import foodRouter from "./routes/foodRoute.js"
+import dotenv from "dotenv";
+
+dotenv.config();
 
 // app config
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 // middleware
 app.use(express.json());
