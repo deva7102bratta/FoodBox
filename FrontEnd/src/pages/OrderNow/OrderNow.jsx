@@ -3,6 +3,7 @@ import "./OrderNow.css";
 import { useLocation } from "react-router-dom";
 
 const OrderNow = () => {
+  const [promo_code, setPromo] = useState("")
   const { state } = useLocation();
   const [paymentMethod, setPaymentMethod] = useState("upi");
   const price = state?.price || 0;
@@ -72,7 +73,17 @@ const OrderNow = () => {
             <small>Pay when food arrives</small>
           </div>
         </div>
+        <div className="cart-promocode">
+          <div>
+            <p>If you have a promo code, Enter it here</p>
+            <div className="cart-promocode-input">
+              <input type="text" onChange={e=>{setPromo(e.target.value.toUpperCase())}} value={promo_code} placeholder="promo code" />
+              <button>Submit</button>
+            </div>
+          </div>
+        </div>
       </div>   {/* ✅ only ONE closing tag here */}
+     
       {/* Right Side */}
       <div className="place-order-right">
         <div className="cart-total">
