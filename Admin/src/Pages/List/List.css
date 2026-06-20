@@ -1,0 +1,48 @@
+.list-table-format {
+    display: grid;
+    grid-template-columns: 0.5fr 2fr 1fr 1fr 0.5fr;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 15px;
+    border: 1px solid #cacaca;
+    font-size: 13px;
+    margin: 10px;
+}
+
+.list-table-format.title {
+    background: #f9f9f9;
+    font-weight: 600;
+}
+
+.list-table-format img {
+    width: 50px;
+}
+
+#cancel{
+  color: red;
+  font-weight: 1000;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+@media (max-width: 760px) {
+    .list-table-format {
+        justify-content: space-between;
+        display: flex;
+        padding: 7px 30px;
+    }
+
+    .list-table-format.title {
+        display: none;
+    }
+
+    /* Hide Category */
+    .list-table-format p:nth-child(3) {
+        display: none;
+    }
+
+    .list-table-format img {
+        width: 45px;
+    }
+}

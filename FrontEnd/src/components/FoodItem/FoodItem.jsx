@@ -5,14 +5,14 @@ import { assets } from "../../assets/frontend_assets/assets.js";
 import { StoreContext } from "../../Context/StoreContext.jsx"
 
 const FoodItem = ({ id, name, price, description, image }) => {
-  const {cartItems, addToCart, removeFromCart} = useContext(StoreContext)
+  const {cartItems, addToCart, removeFromCart, url} = useContext(StoreContext)
   const quantity = cartItems[id] || 0
   const navigate = useNavigate()
   
   return (
     <div className="food-item">
       <div className="food-item-img-container">
-        <img className="food-item-img" src={image} alt={name} />
+        <img className="food-item-img" src={`${url}/images/${image}`} alt={name} />
 
         {!quantity
         ?<img className="add-food" onClick={() => addToCart(id)} src={assets.add_icon_white}/>
@@ -36,7 +36,7 @@ const FoodItem = ({ id, name, price, description, image }) => {
       <div className="food-item-info">
         <div className="food-item-name-rating">
           <p>{name}</p>
-          <p className="food-item-price">${price}</p>
+          <p className="food-item-price">₹{price}</p>
         </div>
       </div>
 
